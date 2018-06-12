@@ -1,0 +1,20 @@
+{
+  "name": "coinchangerkata",
+  "version": "1.0.0",
+  "description": "coinchangerkata",
+  "main": "coinChanger.js",
+  "dependencies": {
+    "istanbul": "^0.4.5",
+    "jasmine": "^3.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "istanbul cover jasmine-node spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Pil3q/coinChangerKata.git"
+  },
+  "author": "Patryk Pilecki",
+  "license": "ISC"
+}
