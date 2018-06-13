@@ -9,7 +9,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "istanbul cover jasmine-node spec"
+    "test": "istanbul cover jasmine"
   },
   "repository": {
     "type": "git",
