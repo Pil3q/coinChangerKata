@@ -8,6 +8,8 @@ class coin {
     this.howMany20p()
     this.howMany10p()
     this.howMany5p()
+    this.howMany2p()
+    this.howMany1p()
     return this.result
   }
   howMany50p(amount) {
@@ -27,9 +29,19 @@ class coin {
     this.amount -= tenPCoinsNumber * 10
   }
   howMany5p() {
-    var tenPCoinsNumber = Math.floor(this.amount / 5)
-    this.result += tenPCoinsNumber.toString() + ' x 5p '
-    this.amount -= tenPCoinsNumber * 5
+    var fivePCoinsNumber = Math.floor(this.amount / 5)
+    this.result += fivePCoinsNumber.toString() + ' x 5p '
+    this.amount -= fivePCoinsNumber * 5
+  }
+  howMany2p() {
+    var twoPCoinsNumber = Math.floor(this.amount / 2)
+    this.result += twoPCoinsNumber.toString() + ' x 2p '
+    this.amount -= twoPCoinsNumber * 2
+  }
+  howMany1p() {
+    var onePCoinsNumber = Math.floor(this.amount / 1)
+    this.result += onePCoinsNumber.toString() + ' x 1p'
+    this.amount -= onePCoinsNumber * 1
   }
 }
 exports.coin = coin;
