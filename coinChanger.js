@@ -4,7 +4,7 @@ class coin {
     this.amount = amount
   }
   change(amount) {
-    this.howMany2pounds(amount)
+    this.howMany2pounds(amount * 100)
     this.howManyPounds()
     this.howMany50p()
     this.howMany20p()
@@ -57,5 +57,3 @@ class coin {
   }
 }
 exports.coin = coin;
-
-// Coins 50p 20p 10p 5p 2p 1p aim to return the least amount of coins
