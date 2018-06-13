@@ -6,17 +6,17 @@ describe('coin changer', function(){
   })
   describe('returns two biggest coins when amount dividible', function(){
     it('returns 2 x 50p when We will pass a pound (100p)', function(){
-      expect(coin.change(100)).toEqual('2 x 50p 0 x 20p ')
+      expect(coin.change(100)).toEqual('2 x 50p 0 x 20p 0 x 10p 0 x 5p ')
     })
     it('returns 2 x 20p if 40p passed', function(){
-      expect(coin.change(40)).toEqual('0 x 50p 2 x 20p ')
+      expect(coin.change(40)).toEqual('0 x 50p 2 x 20p 0 x 10p 0 x 5p ')
     })
-    // it('returns 2 x 10p if 20p passed', function(){
-    //   expect(coin.change(20)).toEqual('2 x 10p')
-    // })
-    // it('returns 2 x 5p if 10p passed', function(){
-    //   expect(coin.change(10)).toEqual('2 x 5p')
-    // })
+    it('returns 2 x 10p if 20p passed', function(){
+      expect(coin.change(30)).toEqual('0 x 50p 1 x 20p 1 x 10p 0 x 5p ')
+    })
+    it('returns 2 x 5p if 10p passed', function(){
+      expect(coin.change(15)).toEqual('0 x 50p 0 x 20p 1 x 10p 1 x 5p ')
+    })
     // it('returns 2 x 2p if 4p passed', function(){
     //   expect(coin.change(4)).toEqual('2 x 2p')
     // })
