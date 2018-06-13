@@ -35,5 +35,9 @@ describe('coin changer', function(){
     it('when 278p passed looking for 2 pounds coin', function(){
       expect(coin.change(2.78)).toEqual('1 x two pounds 0 x pound 1 x 50p 1 x 20p 0 x 10p 1 x 5p 1 x 2p 1 x 1p')
     })
+    it('does two changes and return right result', function(){
+      coin.change(4.22)
+      expect(coin.change(2.78)).toEqual('1 x two pounds 0 x pound 1 x 50p 1 x 20p 0 x 10p 1 x 5p 1 x 2p 1 x 1p')
+    })
   })
 })

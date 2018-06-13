@@ -4,6 +4,7 @@ class coin {
     this.amount = amount
   }
   change(amount) {
+    this.result = ''
     this.howMany2pounds(amount * 100)
     this.howManyPounds()
     this.howMany50p()
