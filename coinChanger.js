@@ -4,7 +4,9 @@ class coin {
     this.amount = amount
   }
   change(amount) {
-    this.howMany50p(amount)
+    this.howMany2pounds(amount)
+    this.howManyPounds()
+    this.howMany50p()
     this.howMany20p()
     this.howMany10p()
     this.howMany5p()
@@ -12,10 +14,20 @@ class coin {
     this.howMany1p()
     return this.result
   }
-  howMany50p(amount) {
-    var fiftyPCoinsNumber = Math.floor(amount / 50)
-    this.result += fiftyPCoinsNumber.toString() + ' x 50p '
+  howMany2pounds(amount) {
+    var twoPoundCoinsNumber = Math.floor(amount / 200)
+    this.result += twoPoundCoinsNumber.toString() + ' x two pounds '
     this.amount = amount
+    this.amount -= twoPoundCoinsNumber * 200
+  }
+  howManyPounds() {
+    var poundCoinsNumber = Math.floor(this.amount / 100)
+    this.result += poundCoinsNumber.toString() + ' x pound '
+    this.amount -= poundCoinsNumber * 100
+  }
+  howMany50p() {
+    var fiftyPCoinsNumber = Math.floor(this.amount / 50)
+    this.result += fiftyPCoinsNumber.toString() + ' x 50p '
     this.amount -= fiftyPCoinsNumber * 50
   }
   howMany20p() {
