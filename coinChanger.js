@@ -1,60 +1,26 @@
 class coin {
-  constructor(result = '', amount = 0) {
-    this.result = result
+  constructor(amount = 0) {
     this.amount = amount
   }
   change(amount) {
-    this.result = ''
-    this.howMany2pounds(amount * 100)
-    this.howManyPounds()
-    this.howMany50p()
-    this.howMany20p()
-    this.howMany10p()
-    this.howMany5p()
-    this.howMany2p()
-    this.howMany1p()
-    return this.result
+    this.amount = amount * 100
+    var change = {
+      twoPounds: this.howManyCoins(this.amount, 200),
+      onePound: this.howManyCoins(this.amount, 100),
+      fiftyP: this.howManyCoins(this.amount, 50),
+      twentyP: this.howManyCoins(this.amount, 20),
+      tenP: this.howManyCoins(this.amount, 10),
+      fiveP: this.howManyCoins(this.amount, 5),
+      twoP: this.howManyCoins(this.amount, 2),
+      oneP: this.howManyCoins(this.amount, 1)
+    }
+    return `${change.twoPounds} x two pounds ${change.onePound} x pound ${change.fiftyP} x 50p ${change.twentyP} x 20p ${change.tenP} x 10p ${change.fiveP} x 5p ${change.twoP} x 2p ${change.oneP} x 1p`
+
   }
-  howMany2pounds(amount) {
-    var twoPoundCoinsNumber = Math.floor(amount / 200)
-    this.result += twoPoundCoinsNumber.toString() + ' x two pounds '
-    this.amount = amount
-    this.amount -= twoPoundCoinsNumber * 200
-  }
-  howManyPounds() {
-    var poundCoinsNumber = Math.floor(this.amount / 100)
-    this.result += poundCoinsNumber.toString() + ' x pound '
-    this.amount -= poundCoinsNumber * 100
-  }
-  howMany50p() {
-    var fiftyPCoinsNumber = Math.floor(this.amount / 50)
-    this.result += fiftyPCoinsNumber.toString() + ' x 50p '
-    this.amount -= fiftyPCoinsNumber * 50
-  }
-  howMany20p() {
-    var twentyPCoinsNumber = Math.floor(this.amount / 20)
-    this.result += twentyPCoinsNumber.toString() + ' x 20p '
-    this.amount -= twentyPCoinsNumber * 20
-  }
-  howMany10p() {
-    var tenPCoinsNumber = Math.floor(this.amount / 10)
-    this.result += tenPCoinsNumber.toString() + ' x 10p '
-    this.amount -= tenPCoinsNumber * 10
-  }
-  howMany5p() {
-    var fivePCoinsNumber = Math.floor(this.amount / 5)
-    this.result += fivePCoinsNumber.toString() + ' x 5p '
-    this.amount -= fivePCoinsNumber * 5
-  }
-  howMany2p() {
-    var twoPCoinsNumber = Math.floor(this.amount / 2)
-    this.result += twoPCoinsNumber.toString() + ' x 2p '
-    this.amount -= twoPCoinsNumber * 2
-  }
-  howMany1p() {
-    var onePCoinsNumber = Math.floor(this.amount / 1)
-    this.result += onePCoinsNumber.toString() + ' x 1p'
-    this.amount -= onePCoinsNumber * 1
+  howManyCoins(amount, coin) {
+    var coinsNumber = Math.floor(amount / coin)
+    this.amount -= coinsNumber * coin
+    return coinsNumber;
   }
 }
 exports.coin = coin;
