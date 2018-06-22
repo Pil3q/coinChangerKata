@@ -1,4 +1,4 @@
-let changer = require('../coinChanger.js')
+let changer = require('../src/coinChanger.js')
 
 describe('coin changer', function(){
   beforeEach(function(){
