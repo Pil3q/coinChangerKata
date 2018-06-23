@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">90% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>9/10</span>
+        <span class='fraction'>33/33</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -32,12 +32,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>4/4</span>
+        <span class='fraction'>13/13</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">90% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>9/10</span>
+        <span class='fraction'>33/33</span>
       </div>
     </div>
   </div>
@@ -58,8 +58,45 @@
 13
 14
 15
-16</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">9×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -67,9 +104,38 @@
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -78,13 +144,46 @@ let cashier = require('../src/cashier.js')
 &nbsp;
 describe('cashier', function(){
   beforeEach(function(){
-    coin = new changer.coin();
-    cashier = new cashier.cashier();
+    till = new cashier.cashier();
   });
   describe('#load', function(){
-    it('got money in', function(){
-      cashier.load(2, 50)
-<span class="cstat-no" title="statement not covered" >      expect(cashier.content.fiftyP).toEqual(2)</span>
+    it('2 pounds', function(){
+      till.loadCoins(2, 2.00)
+      expect(till.content.twoPounds).toEqual(102)
+    })
+    it('1 pounds', function(){
+&nbsp;
+      till.loadCoins(2, 1.00)
+      expect(till.content.onePound).toEqual(102)
+    })
+    it('50p', function(){
+      till.loadCoins(2, 0.50)
+      expect(till.content.fiftyP).toEqual(102)
+    })
+    it('20p', function(){
+      till.loadCoins(2, 0.20)
+      expect(till.content.twentyP).toEqual(102)
+    })
+    it('10p', function(){
+      till.loadCoins(2, 0.10)
+      expect(till.content.tenP).toEqual(102)
+    })
+    it('5p', function(){
+      till.loadCoins(2, 0.05)
+      expect(till.content.fiveP).toEqual(102)
+    })
+    it('2p', function(){
+      till.loadCoins(2, 0.02)
+      expect(till.content.twoP).toEqual(102)
+    })
+    it('1p', function(){
+      till.loadCoins(2, 0.01)
+      expect(till.content.oneP).toEqual(102)
+    })
+    it('wrong amount', function(){
+      expect(function() {
+        till.loadCoins(2, 0.03);
+      }).toThrow("There is no such a coin !");
     })
   })
 });
@@ -94,7 +193,7 @@ describe('cashier', function(){
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jun 22 2018 23:11:55 GMT+0100 (BST)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 23 2018 21:58:29 GMT+0100 (BST)
 </div>
 </div>
 <script src="../prettify.js"></script>

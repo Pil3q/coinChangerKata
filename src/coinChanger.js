@@ -1,3 +1,4 @@
+let cashier = require('../src/cashier.js')
 class coin {
   constructor(amount = 0) {
     this.amount = amount
