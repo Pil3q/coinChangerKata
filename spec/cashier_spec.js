@@ -45,4 +45,11 @@ describe('cashier', function(){
       }).toThrow("There is no such a coin !");
     })
   })
+    describe('#takeCoins', function(){
+      it('wrong amount', function(){
+        expect(function() {
+          till.takeCoins(2, 0.03);
+        }).toThrow("There is no such a coin !");
+      })
+    })
 });

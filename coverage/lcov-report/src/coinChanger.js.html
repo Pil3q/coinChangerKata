@@ -22,12 +22,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>9/9</span>
+        <span class='fraction'>18/18</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>9/9</span>
+        <span class='fraction'>18/18</span>
       </div>
     </div>
   </div>
@@ -70,57 +70,99 @@
 25
 26
 27
-28</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-yes">14×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">13×</span>
-<span class="cline-any cline-yes">13×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">13×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">104×</span>
-<span class="cline-any cline-yes">104×</span>
-<span class="cline-any cline-yes">104×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">120×</span>
+<span class="cline-any cline-yes">120×</span>
+<span class="cline-any cline-yes">120×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">111×</span>
+<span class="cline-any cline-yes">111×</span>
+<span class="cline-any cline-yes">111×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">let cashier = require('../src/cashier.js')
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const cashier = require('../src/cashier.js')
 class coin {
-  constructor(amount = 0) {
+  constructor(amount = 0, till = new cashier.cashier()) {
     this.amount = amount
+    this.till = till
   }
   change(amount) {
-    this.amount = amount * 100
+    this.amount = Math.ceil(amount * 100)
     var change = {
-      twoPounds: this.howManyCoins(this.amount, 200),
-      onePound: this.howManyCoins(this.amount, 100),
-      fiftyP: this.howManyCoins(this.amount, 50),
-      twentyP: this.howManyCoins(this.amount, 20),
-      tenP: this.howManyCoins(this.amount, 10),
-      fiveP: this.howManyCoins(this.amount, 5),
-      twoP: this.howManyCoins(this.amount, 2),
-      oneP: this.howManyCoins(this.amount, 1)
+      twoPounds: this.howManyCoins(this.amount, 200, this.till.content.twoPounds),
+      onePound: this.howManyCoins(this.amount, 100, this.till.content.onePound),
+      fiftyP: this.howManyCoins(this.amount, 50, this.till.content.fiftyP),
+      twentyP: this.howManyCoins(this.amount, 20, this.till.content.twentyP),
+      tenP: this.howManyCoins(this.amount, 10, this.till.content.tenP),
+      fiveP: this.howManyCoins(this.amount, 5, this.till.content.fiveP),
+      twoP: this.howManyCoins(this.amount, 2, this.till.content.twoP),
+      oneP: this.howManyCoins(this.amount, 1, this.till.content.oneP)
     }
-    return `${change.twoPounds} x two pounds ${change.onePound} x pound ${change.fiftyP} x 50p ${change.twentyP} x 20p ${change.tenP} x 10p ${change.fiveP} x 5p ${change.twoP} x 2p ${change.oneP} x 1p`
-&nbsp;
-  }
-  howManyCoins(amount, coin) {
+    if (this.amount &gt; 0) {
+      return `${this.amount} cannot be changed, rest is ${change.twoPounds} x two pounds ${change.onePound} x pound ${change.fiftyP} x 50p ${change.twentyP} x 20p ${change.tenP} x 10p ${change.fiveP} x 5p ${change.twoP} x 2p ${change.oneP} x 1p`
+    }
+    else {
+      return `${change.twoPounds} x two pounds ${change.onePound} x pound ${change.fiftyP} x 50p ${change.twentyP} x 20p ${change.tenP} x 10p ${change.fiveP} x 5p ${change.twoP} x 2p ${change.oneP} x 1p`
+    }
+    }
+  howManyCoins(amount, coin, limit) {
+    console.log(this.amount)
     var coinsNumber = Math.floor(amount / coin)
-    this.amount -= coinsNumber * coin
-    return coinsNumber;
+    if (coinsNumber &gt; limit) {
+      this.amount -= limit * coin
+      this.till.takeCoins(limit, coin / 100)
+      return limit
+    }
+    else {
+      this.amount -= coinsNumber * coin
+      this.till.takeCoins(coinsNumber, coin / 100)
+      return coinsNumber;
+    }
   }
 }
 exports.coin = coin;
@@ -130,7 +172,7 @@ exports.coin = coin;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jun 23 2018 22:14:51 GMT+0100 (BST)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jun 24 2018 00:20:02 GMT+0100 (BST)
 </div>
 </div>
 <script src="../prettify.js"></script>
