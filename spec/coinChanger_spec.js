@@ -1,10 +1,23 @@
 let changer = require('../src/coinChanger.js')
 
 describe('coin changer', function(){
-  beforeEach(function(){
-    coin = new changer.coin()
-  })
   describe('returns as little coins as possible', function(){
+    beforeEach(function(){
+      coin = new changer.coin()
+      function Cashier() {
+        this.content = {
+          twoPounds: 100,
+          onePound: 100,
+          fiftyP: 100,
+          twentyP: 100,
+          tenP: 100,
+          fiveP: 100,
+          twoP: 100,
+          oneP: 100,
+        }
+      }
+      till = new Cashier();
+    })
     it('when 90p passed looking for 50p coin', function(){
       expect(coin.change(0.90)).toEqual('0 x two pounds 0 x pound 1 x 50p 2 x 20p 0 x 10p 0 x 5p 0 x 2p 0 x 1p')
     })
@@ -38,6 +51,28 @@ describe('coin changer', function(){
     it('does two changes and return right result', function(){
       coin.change(4.22)
       expect(coin.change(2.78)).toEqual('1 x two pounds 0 x pound 1 x 50p 1 x 20p 0 x 10p 1 x 5p 1 x 2p 1 x 1p')
+    })
+  })
+  describe('limited coins at the till', function(){
+    beforeEach(function(){
+      coin = new changer.coin()
+      function Cashier() {
+        this.content = {
+          twoPounds: 1,
+          onePound: 1,
+          fiftyP: 1,
+          twentyP: 1,
+          tenP: 1,
+          fiveP: 1,
+          twoP: 1,
+          oneP: 1,
+        }
+      }
+      till = new Cashier();
+    })
+    it('will not give you two pounds twice if just one in till', function(){
+      till.content.onePound = 2
+      expect(coin.change(4.00)).toEqual('1 x two pounds 2 x pound 0 x 50p 0 x 20p 0 x 10p 0 x 5p 0 x 2p 0 x 1p')
     })
   })
 })
